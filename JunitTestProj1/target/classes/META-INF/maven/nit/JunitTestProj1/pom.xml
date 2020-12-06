@@ -57,7 +57,13 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
+					<version>3.0.0-M5</version>
+					<configuration>
+					     <!-- Tags to include  -->
+					    <goal>uat</goal>
+					      <!-- Tags  to exclude -->
+                          <excludedGroups>dev</excludedGroups>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>

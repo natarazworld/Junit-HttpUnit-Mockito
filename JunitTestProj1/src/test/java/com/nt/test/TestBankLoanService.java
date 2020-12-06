@@ -3,13 +3,28 @@ package com.nt.test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+
+import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer.MethodName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.nt.service.BankLoanService;
 
+@DisplayName("TestingBankLoanService class")
+//@TestMethodOrder(value =OrderAnnotation.class)  //best
+@TestMethodOrder(value =MethodName.class)
+//@TestMethodOrder(value =MethodName.class)
+//@TestMethodOrder(value=MethodOrderer.DisplayName.class)
+//@TestMethodOrder(value=MethodOrderer.Random.class)  //default
 public class TestBankLoanService {
 	private static BankLoanService service;
 	
@@ -27,6 +42,9 @@ public class TestBankLoanService {
 	}*/
 	
 	@Test
+	@DisplayName("testing with small Numbers")
+	//@Order(10)
+	@Tag("dev")
 	  public void testcalcSimpleIntrestAmountWithSmallNumbers() {
 		System.out.println("TestBankLoanService.testcalcSimpleIntrestAmountWithSmallNumbers()");
 		float actual=service.calcSimpleIntrestAmount(100000,2, 12); //actual result
@@ -35,6 +53,10 @@ public class TestBankLoanService {
 	  }
 	
 	@Test
+	@DisplayName("testing with Big Numbers")
+	//@Order(2)
+	@Tag("uat")
+	@Tag("dev")
 	  public void testcalcSimpleIntrestAmountWithBiglNumbers() {
 		System.out.println("TestBankLoanService.testcalcSimpleIntrestAmountWithBiglNumbers()");
 		float actual=service.calcSimpleIntrestAmount(10000000,2, 12); //actual result
@@ -45,6 +67,9 @@ public class TestBankLoanService {
 	  }
 	
 	@Test
+	@DisplayName("testing with Invalid Inputs")
+	//@Order(5)
+	@Tag("uat")
 	  public void testcalcSimpleIntrestAmountWithInvalidInputs() {
 		System.out.println("TestBankLoanService.testcalcSimpleIntrestAmountWithInvalidInputs()");
 		 assertThrows(IllegalArgumentException.class,
@@ -53,7 +78,11 @@ public class TestBankLoanService {
 		                         );
 	  }
 	
-	/*@Test
+	@Test
+	@Disabled
+	@DisplayName("testing with Timout Period")
+	//@Order(0)
+	@Tag("dev")
 	  public void testcalcSimpleIntrestAmountWithTimer() {
 		 BankLoanService service=new BankLoanService();
 		 assertTimeout(Duration.ofMillis(20000),
@@ -61,11 +90,15 @@ public class TestBankLoanService {
 				                	   service.calcSimpleIntrestAmount(10000000, 2, 12);
 				                   }
 				                    );
-	  }*/
+	  }
 	
 	@Test
-	  public void testcalcSimpleIntrestAmountForNoExceptions() {
+	@DisplayName("testing for No Exceptions")
+	//@Order(-10)
+	@Tag("uat")
+	  public void testcalcSimpleIntrestAmountForNoExceptions(TestInfo info) {
 		System.out.println("TestBankLoanService.testcalcSimpleIntrestAmountForNoExceptions()");
+		System.out.println(info.getClass()+"  "+info.getTags()+"  "+info.getDisplayName()+"  "+info.getTestMethod().get().getName()+"  "+info.getTestClass().get().getName());
 		 assertDoesNotThrow(()->{
 			                                      service.calcSimpleIntrestAmount(10000, 2, 12);
 			                                       }

@@ -8,19 +8,30 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-13">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="G:/Softwares/Eclipse/eclipse-jee-2020-06-R-win32-x86_641/eclipse/plugins/org.junit.platform.suite.api_1.6.0.v20200203-2009.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://junit.org/junit5/docs/current/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="G:/Softwares/Eclipse/eclipse-jee-2020-06-R-win32-x86_641/eclipse/plugins/org.junit.platform.runner_1.6.0.v20200203-2009.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://junit.org/junit5/docs/current/api/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
